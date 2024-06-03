@@ -23,9 +23,6 @@
 		elemCarousel.scroll(x, 0);
 	}
 </script>
-<h1 class="text-3xl">Welcome to SvelteKit</h1>
-<p>Visit {hello} <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
 <div class="p-4 grid grid-cols-[auto_1fr_auto] gap-4 items-center">
 	<!-- Button: Left -->
 	<button type="button" class="btn-icon variant-filled" on:click={carouselLeft}>
