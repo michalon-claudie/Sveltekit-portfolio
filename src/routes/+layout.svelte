@@ -17,7 +17,7 @@
   </svelte:fragment>
     <svelte:fragment slot="pageHeader">
       <nav>
-        <ol>
+        <ol class="flex flex-row gap-4 justify-center">
           <li>
             Acceuil
           </li>
