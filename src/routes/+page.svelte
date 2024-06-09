@@ -6,14 +6,8 @@
 	import slide3 from '$lib/assets/bg-blue.jpg'
 	const slides = [ slide1, slide2, slide3];
 	import Cards from '$lib/components/Cards.svelte'
-
-	function carouselLeft(): void {
-		const x =
-			elemCarousel.scrollLeft === 0
-				? elemCarousel.clientWidth * elemCarousel.childElementCount 
-				: elemCarousel.scrollLeft - elemCarousel.clientWidth; 
-		elemCarousel.scroll(x, 0);
-	}
+	import Paragraph from '$lib/components/Paragraph.svelte';
+    import { onDestroy, onMount } from 'svelte';
 
 	function carouselRight(): void {
 		const x =
@@ -22,21 +16,34 @@
 				: elemCarousel.scrollLeft + elemCarousel.clientWidth; 
 		elemCarousel.scroll(x, 0);
 	}
+	let carouselInterval :number;
+	function startAutoCarousel(){
+		carouselInterval=setInterval(carouselRight, 5000)
+	}
+	function stopAutoCarousel(){
+		clearInterval(carouselInterval)
+	}
+	onMount(()=>{
+		startAutoCarousel()
+	})
+	onDestroy(()=>{
+		stopAutoCarousel()
+	})
 </script>
-<div class="p-4 grid grid-cols-[auto_1fr_auto] gap-4 items-center">
-	<!-- Button: Left -->
-	<button type="button" class="btn-icon variant-filled" on:click={carouselLeft}>
-		<i class="fa-solid fa-arrow-left" />
-	</button>
-	<!-- Full Images -->
+<div class="flex gap-4 items-center">
 	<div bind:this={elemCarousel} class="snap-x snap-mandatory scroll-smooth flex overflow-x-auto">
 		{#each slides as img}
 			<Cards pictureSlide={img}/>
 		{/each}
 	</div>
-	<!-- Button: Right -->
-	<button type="button" class="btn-icon variant-filled" on:click={carouselRight}>
-		<i class="fa-solid fa-arrow-right" />
-	</button>
 </div>
+<div>
+	<Paragraph titleParagraph='Bienvenue sur mon site' contentParagraph='Bienvenue sur mon site, je suis Claudie, devellopeuse web.'/>
+</div>
+<section class="flex flex-row gap-4">
+	{#each slides as img}
+		<Cards pictureSlide={img}/>
+	{/each}
+</section>
+
 
