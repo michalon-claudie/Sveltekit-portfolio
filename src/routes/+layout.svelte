@@ -29,5 +29,12 @@
       </ol>
     </nav>
   <slot />
-  <svelte:fragment slot="pageFooter">Page Footer</svelte:fragment>
+  <svelte:fragment slot="pageFooter">
+    <footer class="bg-black flex flex-col items-center justify-center">
+      <p>mail</p>
+      <p>linkdin</p>
+      <p>numero de telephone</p>
+      <p>Michalon Claudie Copyright 2024</p>
+    </footer>
+  </svelte:fragment>
 </AppShell>

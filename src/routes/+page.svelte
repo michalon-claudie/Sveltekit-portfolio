@@ -30,8 +30,8 @@
 		stopAutoCarousel()
 	})
 </script>
-<div class="flex gap-4 items-center">
-	<div bind:this={elemCarousel} class="snap-x snap-mandatory scroll-smooth flex overflow-x-auto">
+<div class="flex gap-4">
+	<div bind:this={elemCarousel} class="snap-x snap-mandatory scroll-smooth flex overflow-x-auto w-full">
 		{#each slides as img}
 			<Cards pictureSlide={img}/>
 		{/each}
