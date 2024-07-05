@@ -4,7 +4,9 @@
 	import slide1 from '$lib/assets/alliMobile.webp'
 	import slide2 from '$lib/assets/alligator.webp'
 	import slide3 from '$lib/assets/bg-blue.jpg'
+    import CardCitation from '$lib/components/CardCitation.svelte';
 	const slides = [ slide1, slide2, slide3];
+	import cardCitationNumberOne from '$lib/assets/alligator.webp'
 	import Cards from '$lib/components/Cards.svelte'
 	import Paragraph from '$lib/components/Paragraph.svelte';
     import { onDestroy, onMount } from 'svelte';
@@ -37,13 +39,12 @@
 		{/each}
 	</div>
 </div>
-<div>
-	<Paragraph titleParagraph='Bienvenue sur mon site' contentParagraph='Bienvenue sur mon site, je suis Claudie, devellopeuse web.'/>
-</div>
-<section class="flex flex-row gap-4">
-	{#each slides as img}
-		<Cards pictureSlide={img}/>
-	{/each}
+	<Paragraph titleParagraph='Enchanté et Bienvenue sur mon portfolio !' contentParagraph="Après plusieurs années dans le domaine de la santé, j'ai ressenti le besoin de changer.
+Suite à de multiples recherches et beaucoup d'apprentissage en autodidacte, j'ai décidé de m'orienter dans le développement web, en particulier dans le domaine du Frontend.
+Chaque jour, je continues mon apprentissage et je me suis lancée le defi de me former au Back-end. Je suis animée par la volonté de créer des expériences numériques convaincantes et accessibles, tout en veillant à ce qu'elles respectent les normes éthiques et environnementales. Mon parcours atypique m'a apporté une perspective unique, alliant sensibilité humaine et expertise technique."/>
+
+<section class="flex flex-row gap-4 h-full">
+	<CardCitation pictureSlide={cardCitationNumberOne}/>
 </section>
 
 

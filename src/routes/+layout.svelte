@@ -15,7 +15,7 @@
           Acceuil
         </li>
         <li>
-          Qui suis-je ?
+          A propos
         </li>
         <li>
           Projets
@@ -32,9 +32,11 @@
   <svelte:fragment slot="pageFooter">
     <footer class="bg-black flex flex-col items-center justify-center">
       <p>mail</p>
+      <p>GitHub</p>
       <p>linkdin</p>
       <p>numero de telephone</p>
       <p>Michalon Claudie Copyright 2024</p>
+      <p>Mon autre site avec React</p>
     </footer>
   </svelte:fragment>
 </AppShell>
