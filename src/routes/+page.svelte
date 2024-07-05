@@ -33,7 +33,7 @@
 	})
 </script>
 <div class="flex gap-4">
-	<div bind:this={elemCarousel} class="snap-x snap-mandatory scroll-smooth flex overflow-x-auto w-full">
+	<div bind:this={elemCarousel} class="snap-x snap-mandatory scroll-smooth flex overflow-x-auto w-full h-60">
 		{#each slides as img}
 			<Cards pictureSlide={img}/>
 		{/each}
@@ -43,7 +43,7 @@
 Suite à de multiples recherches et beaucoup d'apprentissage en autodidacte, j'ai décidé de m'orienter dans le développement web, en particulier dans le domaine du Frontend.
 Chaque jour, je continues mon apprentissage et je me suis lancée le defi de me former au Back-end. Je suis animée par la volonté de créer des expériences numériques convaincantes et accessibles, tout en veillant à ce qu'elles respectent les normes éthiques et environnementales. Mon parcours atypique m'a apporté une perspective unique, alliant sensibilité humaine et expertise technique."/>
 
-<section class="flex flex-row gap-4 h-full">
+<section class="flex flex-row gap-4">
 	<CardCitation pictureSlide={cardCitationNumberOne}/>
 </section>
 

@@ -2,12 +2,19 @@
     export let titleParagraph=''
     export let contentParagraph=''
 </script>
-<div class="card p-10">
-    <h2 class="h2 my-4">{titleParagraph}</h2>
-    <p class="h4 py-8">{@html contentParagraph.replace(/\n/g, '<br>')}</p>
+<div class="cardMobile mx-4 lg:card p-10">
+    <h2 class="h2 lg: my-4">{titleParagraph}</h2>
+    <p class="h4 lg: py-8">{@html contentParagraph.replace(/\n/g, '<br>')}</p>
 </div>
 
 <style>
+     .cardMobile {
+        background: rgba(255, 255, 255, 0.1); 
+        backdrop-filter: blur(10px); 
+        border-radius: 10px; 
+        margin-top: 80px;
+        margin-bottom:80px;
+    }
     .card {
         background: rgba(255, 255, 255, 0.1); /* Background semi-transparent */
         backdrop-filter: blur(10px); /* Flou */

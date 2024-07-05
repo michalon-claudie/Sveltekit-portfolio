@@ -25,20 +25,22 @@
 
 <div class="w-full h-1/4 flex justify-center card">
     <img src={pictureSlide} alt="slideCarousel" class="w-9/12 object-cover rounded-xl my-8">
-    <h3 class="absolute top-1/2 h3 text-center specialTitle">{message}</h3>
+    <h3 class="h6 title absolute top-1/2 lg:h3 text-center lg:lgTitle">{message}</h3>
 </div>
 
 <style>
     .card {
         background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px); 
-        border-radius: 10px; 
+        backdrop-filter: blur(10px);  
         margin-top: 20px;
         margin-bottom:20px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
         position:relative;
     }
-    .specialTitle{
+    .lgTitle{
         max-width:75%;
+    }
+    .title{
+        max-width: 65%;
     }
 </style>
