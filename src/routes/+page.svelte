@@ -10,21 +10,9 @@
 	import Cards from '$lib/components/Cards.svelte'
 	import Paragraph from '$lib/components/Paragraph.svelte';
     import { onDestroy, onMount } from 'svelte';
-    import Projects from '$lib/components/Projects.svelte';
 	export let data;
-	console.log(data.projects)
-	export let projects: {
-            id: string;
-            title: string;
-            date: string;
-            languages: string[];
-            description: string;
-            img: string;
-            cover: string;
-            link?: string;
-            githubLink: string;
-        }[];
-
+	export let projects: { id: string; title: string;date: string;languages: string[];description: string; img: string;cover: string;link?: string;githubLink: string;}[];
+        
 	function carouselRight(): void {
 		const x =
 			elemCarousel.scrollLeft === elemCarousel.scrollWidth - elemCarousel.clientWidth
@@ -45,7 +33,21 @@
 	onDestroy(()=>{
 		stopAutoCarousel()
 	})
+
+	let currentPage = 1;
+    const itemsPerPage = 3;
+    const totalPages = Math.ceil(data.projects.length / itemsPerPage);
+    function getCurrentPageProjects() {
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        return data.projects.slice(start, end);
+    }
+
+    function goToPage(page) {
+        currentPage = page;
+    }
 </script>
+
 <div class="flex gap-4">
 	<div bind:this={elemCarousel} class="snap-x snap-mandatory scroll-smooth flex overflow-x-auto w-full h-60">
 		{#each slides as img}
@@ -60,15 +62,30 @@ Chaque jour, je continues mon apprentissage et je me suis lancée le defi de me 
 <div class="flex flex-row gap-4">
 	<CardCitation pictureSlide={cardCitationNumberOne}/>
 </div>
-<section class="flex flex-wrap">
-	<h1>Mes projets</h1>
-    <div class="projectsContainer">
+<section>
+	<h1 class="h3 text-center my-10">Mes projets</h1>
+    <div class="flex flex-col gap-4 my-8">
         {#each data.projects as project (project.id)}
-            <div>
-                <img src={project.cover} alt={project.title} />
+            <div class="p-8">
+                <img src={project.cover} alt={project.title} class="object-cover w-full h-52"/>
                 <h2>{project.title}</h2>
             </div>
         {/each}
+    </div>
+	<div class="pagination flex justify-center my-4">
+        <button on:click={() => goToPage(currentPage - 1)} disabled={currentPage === 1} class="mx-1">
+            Précédent
+        </button>
+        
+        {#each Array(totalPages) as _, i}
+            <button on:click={() => goToPage(i + 1)} class="{currentPage === (i + 1) ? 'active' : ''} mx-1">
+                {i + 1}
+            </button>
+        {/each}
+        
+        <button on:click={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages} class="mx-1">
+            Suivant
+        </button>
     </div>
 </section>
 

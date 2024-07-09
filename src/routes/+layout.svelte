@@ -1,8 +1,14 @@
 <script lang="ts">
     import "../app.css";
-    import { AppShell, AppBar } from '@skeletonlabs/skeleton';				
+    import { AppShell, AppBar } from '@skeletonlabs/skeleton';	
+    import Loader from '$lib/components/Loader.svelte';
+    let isLoading = true;
+    let showContent = false;			
   </script>
-  
+ 
+ <Loader {isLoading} />
+
+{#if showContent} 
 <AppShell class="bg-bg bg-cover text-white">
   <svelte:fragment slot="header">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
@@ -41,3 +47,4 @@
   </footer>
 </svelte:fragment>
 </AppShell>
+{/if}
