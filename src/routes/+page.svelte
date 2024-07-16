@@ -11,7 +11,7 @@
 	import Paragraph from '$lib/components/Paragraph.svelte';
     import { onDestroy, onMount } from 'svelte';
 	export let data;
-	export let projects: { id: string; title: string;date: string;languages: string[];description: string; img: string;cover: string;link?: string;githubLink: string;}[];
+	
         
 	function carouselRight(): void {
 		const x =
@@ -36,16 +36,17 @@
 
 	let currentPage = 1;
     const itemsPerPage = 3;
-    const totalPages = Math.ceil(data.projects.length / itemsPerPage);
-    function getCurrentPageProjects() {
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        return data.projects.slice(start, end);
+	$: totalPages = Math.ceil(data.projects.length / itemsPerPage);
+
+    // Get the projects for the current page
+    $: paginatedProjects = data.projects.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    function goToPage(page: number) {
+        if (page >= 1 && page <= totalPages) {
+            currentPage = page;
+        }
     }
 
-    function goToPage(page) {
-        currentPage = page;
-    }
 </script>
 
 <div class="flex gap-4">
@@ -65,7 +66,7 @@ Chaque jour, je continues mon apprentissage et je me suis lancée le defi de me 
 <section>
 	<h1 class="h3 text-center my-10">Mes projets</h1>
     <div class="flex flex-col gap-4 my-8">
-        {#each data.projects as project (project.id)}
+        {#each paginatedProjects as project (project.id)}
             <div class="p-8">
                 <img src={project.cover} alt={project.title} class="object-cover w-full h-52"/>
                 <h2>{project.title}</h2>
