@@ -1,11 +1,10 @@
 <!-- Loader.svelte -->
 <script>
-    export let isLoading = false;
-    export let loadingDisappear = false;
-
-  </script>
+  export let isLoading = false;
+  export let loadingDisappear = false;
+</script>
   
-  {#if isLoading}
+  {#if isLoading || loadingDisappear}
     <div class="loader-overlay">
       <div class="band band-vertical"></div>
       <div class="band band-horizontal"></div>
@@ -24,6 +23,7 @@
     align-items: center;
     background-color: black;
     transition: opacity 0.5s ease;
+    opacity:1;
   }
   .loader-overlay.fade-out {
   opacity: 0;
@@ -36,19 +36,19 @@
     width: 7px;
     height: 0;
     top: 0;
-    left: 20%;
-    animation: growVertical 1s forwards;
+    left: 10%;
+    animation: growVertical 3s forwards;
   }
   .band-horizontal {
     width: 0;
     height: 10px;
     top: 80%;
     left: 0;
-    animation: growHorizontal 1s 1s forwards; 
+    animation: growHorizontal 2s forwards; 
   }
   @keyframes growVertical {
     to {
-      height: 90%;
+      height: 100%;
     }
   }
   @keyframes growHorizontal {
